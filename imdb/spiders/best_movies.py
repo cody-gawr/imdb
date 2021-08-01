@@ -10,7 +10,8 @@ class BestMoviesSpider(CrawlSpider):
     start_urls = ['https://web.archive.org/web/20200715000935if_/https://www.imdb.com/search/title/?groups=top_250&sort=user_rating']
 
     rules = (
-        Rule(LinkExtractor(restrict_xpaths="//h3[@class='list-item-header']/a"), callback='parse_item', follow=True),
+        Rule(LinkExtractor(restrict_xpaths="//h3[@class='lister-item-header']/a"), callback='parse_item', follow=True),
+        Rule(LinkExtractor(restrict_xpaths="(//a[@class='lister-page-next next-page'])[2]"))
     )
 
     def parse_item(self, response):
